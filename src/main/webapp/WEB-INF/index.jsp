@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>miniPixxa</title>
     <%@include file="../component/style.jsp" %>
-    </head>
+  </head>
   <body>
-  <%@include file="../component/navbar.jsp" %>
+    <%@include file="../component/navbar.jsp" %>
     <h1 class="container">hello</h1>
   </body>
 </html>

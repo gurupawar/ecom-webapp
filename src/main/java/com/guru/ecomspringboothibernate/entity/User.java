@@ -1,7 +1,10 @@
 package com.guru.ecomspringboothibernate.entity;
 
+import javax.annotation.Generated;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Table;
 import javax.persistence.Id;
 
@@ -11,6 +14,7 @@ public class User {
 
 	@Id
 	@Column(name = "u_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String u_id;
 	@Column(name = "u_Fname")
 	private String u_Fname;
@@ -22,6 +26,13 @@ public class User {
 	private String u_pass;
 
 	public User() {
+	}
+
+	public User(String u_Fname, String u_Lname, String u_email, String u_pass) {
+		this.u_Fname = u_Fname;
+		this.u_Lname = u_Lname;
+		this.u_email = u_email;
+		this.u_pass = u_pass;
 	}
 
 	public User(String u_id, String u_Fname, String u_Lname, String u_email, String u_pass) {
