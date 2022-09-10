@@ -6,15 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign Up</title>
     <%@include file="../component/style.jsp" %>
+    <link rel="stylesheet" href="../css/main.css">
   </head>
   <body>
     <%@include file="../component/navbar.jsp" %>
     <div class="row mt-5">
       <div class="col-md-4 offset-md-4">
         <h3 class="text-center mb-5">Sign up here</h3>
+        <%@include file="../component/message.jsp" %>
         <div class="card">
           <div class="card-body">
-        <form method="post">
+        <form action="signup" method="post">
           <div class="form-group">
             <label for="exampleInputEmail1">First Name</label>
             <input

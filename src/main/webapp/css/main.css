@@ -1,0 +1,7 @@
+body {
+  font-family: "Poppins", sans-serif;
+}
+.success__message {
+  color: darkgreen;
+  font-weight: 400;
+}
