@@ -1,3 +1,9 @@
+<%@page import="com.guru.ecomspringboothibernate.entity.User"%>
+<%
+User user1 =(User) session.getAttribute("current-user");
+
+%>
+
 <nav
   class="navbar navbar-expand-lg navbar-dark bg-primary justify-content-between"
 >
@@ -42,12 +48,28 @@
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="login">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="signup">Register</a>
-        </li>
+        <%
+          if(user1 == null){
+          %>
+            <li class="nav-item">
+               <a class="nav-link" href="login">Login</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="signup">Register</a>
+            </li>
+          <%
+          }else {
+            %>
+            <li class="nav-item">
+               <a class="nav-link" href="#!"><%= user1.getU_Fname() %></a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="logout">logout</a>
+            </li>
+
+            <%
+          }
+        %>
       </ul>
     </form>
   </div>

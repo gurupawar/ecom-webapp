@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Table;
+
+
 import javax.persistence.Id;
 
 @Entity
@@ -24,23 +26,27 @@ public class User {
 	private String u_email;
 	@Column(name = "u_pass")
 	private String u_pass;
+	@Column(name = "u_type")
+	private String u_type;
 
 	public User() {
 	}
 
-	public User(String u_Fname, String u_Lname, String u_email, String u_pass) {
+	public User(String u_Fname, String u_Lname, String u_email, String u_pass, String u_type) {
 		this.u_Fname = u_Fname;
 		this.u_Lname = u_Lname;
 		this.u_email = u_email;
 		this.u_pass = u_pass;
+		this.u_type = u_type;
 	}
 
-	public User(String u_id, String u_Fname, String u_Lname, String u_email, String u_pass) {
+	public User(String u_id, String u_Fname, String u_Lname, String u_email, String u_pass, String u_type) {
 		this.u_id = u_id;
 		this.u_Fname = u_Fname;
 		this.u_Lname = u_Lname;
 		this.u_email = u_email;
 		this.u_pass = u_pass;
+		this.u_type = u_type;
 	}
 
 	public String getU_id() {
@@ -79,13 +85,24 @@ public class User {
 		this.u_pass = u_pass;
 	}
 
+
+	@Override
 	public String toString() {
 		return "User [u_Fname=" + u_Fname + ", u_Lname=" + u_Lname + ", u_email=" + u_email + ", u_id=" + u_id
-				+ ", u_pass=" + u_pass + "]";
+				+ ", u_pass=" + u_pass + ", u_type=" + u_type + "]";
 	}
 
 	public void setU_email(String u_email) {
 		this.u_email = u_email;
 	}
+
+	public String getU_type() {
+		return u_type;
+	}
+
+	public void setU_type(String u_type) {
+		this.u_type = u_type;
+	}
+
 
 }
