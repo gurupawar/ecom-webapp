@@ -1,6 +1,5 @@
 package com.guru.ecomspringboothibernate.services;
 
-import java.util.ArrayList;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;

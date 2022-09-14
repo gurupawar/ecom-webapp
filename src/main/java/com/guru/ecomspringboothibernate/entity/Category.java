@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -13,13 +15,15 @@ import java.util.List;
 @Entity
 @Table(name = "category")
 public class Category {
+
 	@Id
 	@Column(name = "c_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String c_id;
 
 	@Column(name = "c_name")
 	private String c_name;
-	
+
 	@Column(name="c_desc")
 	private String c_desc;
 
@@ -32,6 +36,13 @@ public class Category {
 		this.c_desc = c_desc;
 		this.products = products;
 	}
+
+	public Category(String c_name, String c_desc, List<Product> products) {
+		this.c_name = c_name;
+		this.c_desc = c_desc;
+		this.products = products;
+	}
+
 
 	public Category() {
 	}
