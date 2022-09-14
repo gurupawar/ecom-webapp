@@ -2,7 +2,6 @@ package com.guru.ecomspringboothibernate.Dao;
 
 import java.util.List;
 
-
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -14,7 +13,7 @@ import com.guru.ecomspringboothibernate.entity.Category;
 
 @Service
 public class CategoryDao {
-    
+
 	@Autowired
 	SessionFactory sessionFactory;
 
@@ -30,14 +29,17 @@ public class CategoryDao {
 //		}
 //        return clist;
 //    }
-   
-   public List<Category> getCategories() {
-		Session session = sessionFactory.openSession();
-		Criteria criteria = session.createCriteria(Category.class);
-		List<Category> list= criteria.list();
-		return list;
+
+	public List<Category> getCategories() {
+		List<Category> clist = null;
+		try {
+			Session session = sessionFactory.openSession();
+			Criteria criteria = session.createCriteria(Category.class);
+			List<Category> list = criteria.list();
+			clist = list;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return clist;
 	}
 }
-
-
-

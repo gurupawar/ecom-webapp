@@ -26,11 +26,10 @@ if (user == null) {
 <%
 
 CategoryDao cd = new CategoryDao();
-ArrayList<Category> list = (ArrayList<Category>) cd.getCategories();
+List<Category> list = cd.getCategories();
 
-if (list != null) {
-	out.println(list.isEmpty());
-}
+out.println(list.size());
+
 %>
 
 
