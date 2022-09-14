@@ -1,5 +1,6 @@
 package com.guru.ecomspringboothibernate.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.guru.ecomspringboothibernate.Dao.CategoryDao;
+import com.guru.ecomspringboothibernate.Dao.UserDao;
 import com.guru.ecomspringboothibernate.entity.Category;
 import com.guru.ecomspringboothibernate.entity.User;
 import com.guru.ecomspringboothibernate.services.LoginService;
@@ -43,7 +45,7 @@ public class MainController {
 	NewProductService newProductService;
 
 	@Autowired
-	CategoryDao categoryDao;
+	UserDao userDao;
 
 	@GetMapping("/home")
 	public String getAllPixxa() {
@@ -95,6 +97,7 @@ public class MainController {
 		User user = loginService.validatUser(email, password, model);
 
 		HttpSession httpSession = request.getSession();
+		HttpSession httpSessionForCategory = request.getSession();
 
 		System.out.println(" in handleLogin method" + user);
 		// String reDirect = null;
@@ -108,10 +111,13 @@ public class MainController {
 			httpSession.setAttribute("current-user", user);
 			System.out.println("current-user:-" + user);
 
+			ArrayList<Category> cateee = userDao.getCati();
+			httpSessionForCategory.setAttribute("categoryy", cateee);
+
 			if (user.getU_type().equals("admin")) {
+
+				System.out.println("admin "+ cateee);
 				System.out.println("in admin");
-				List<Category> list = categoryDao.getCategories();
-				System.out.println("lol" + list);
 				mv.setViewName("admin");
 			} else if (user.getU_type().equals("normal")) {
 				System.out.println("in normal");
@@ -140,9 +146,6 @@ public class MainController {
 		ModelAndView mv = new ModelAndView();
 		newCategoryService.newCategory(catTitle, catDesc, model);
 		mv.setViewName("admin");
-		CategoryDao cd = new CategoryDao();
-		List<Category> l = cd.getCategories();
-		System.out.println("categories - "+ l);
 		return mv;
 	}
 
@@ -150,11 +153,11 @@ public class MainController {
 	@RequestMapping(path = "/addNewProduct", method = RequestMethod.POST)
 	public ModelAndView addNewProductHandler(@RequestParam("productTitle") String title,
 			@RequestParam("productQty") String qty, @RequestParam("productPrice") String price,
-			@RequestParam("productDesc") String desc, @RequestParam("productImage") String img, Model model) {
+			@RequestParam("productDesc") String desc, @RequestParam("productImage") String img, @RequestParam("catId") String catId , Model model) {
 		System.out.println("in addNewProductHandler");
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("admin");
-		newProductService.newProduct(title, qty, price, desc, img, model);
+		newProductService.newProduct(title, qty, price, desc, img,catId, model);
 		return mv;
 	}
 }

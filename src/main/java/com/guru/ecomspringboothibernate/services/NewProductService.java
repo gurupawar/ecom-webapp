@@ -14,7 +14,7 @@ public class NewProductService {
     @Autowired
     UserDao userDao;
 
-    public void newProduct(String title, String qty, String price, String desc, String img, Model model) {
+    public void newProduct(String title, String qty, String price, String desc, String img, String catId, Model model) {
         System.out.println("in newProduct Service method");
         Session session = userDao.getSession();
         Transaction tx = session.beginTransaction();
@@ -25,7 +25,8 @@ public class NewProductService {
         newPro.setP_price(price);
         newPro.setP_desc(desc);
         newPro.setP_photo(img);
-        // newPro.setCategory(catId);
+        // newPro.getCategory(catId);
+        System.out.println(catId);
 
         session.save(newPro);
         System.out.println(newPro);

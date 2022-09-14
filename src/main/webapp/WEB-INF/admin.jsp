@@ -1,11 +1,11 @@
-<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@page import="com.guru.ecomspringboothibernate.Dao.CategoryDao"%>
 <%@page import="java.util.List"%>
 <%@page import="com.guru.ecomspringboothibernate.entity.User"%>
 <%@page import="com.guru.ecomspringboothibernate.entity.Category"%>
 <%
 User user = (User) session.getAttribute("current-user");
-
+List<Category> categoryy = (List<Category>) session.getAttribute("categoryy");
 
 if (user == null) {
 	session.setAttribute("msg",
@@ -21,15 +21,6 @@ if (user == null) {
 		return;
 	}
 }
-%>
-
-<%
-
-CategoryDao cd = new CategoryDao();
-List<Category> list = cd.getCategories();
-
-out.println(list.size());
-
 %>
 
 
@@ -173,12 +164,20 @@ out.println(list.size());
 						</div>
 
 
-						<div class="form-group"></div>
+						<div class="form-group">
+						<select name="catId" class="form-control" id="exampleFormControlSelect1">
+							<%
+							for(Category c:categoryy){
+							%>
+							<option value=" <%= c.getC_id() %>"> <%=c.getC_name() %>
+							<% } %>
+							</select>
+						</div>
 						<div class="form-group">
 							<textarea class="form-control" id="productDesc"
 								placeholder="Description" rows="3" name="productDesc" required></textarea>
 						</div>
-						<div class="custom-file">
+						<div class="custom-file mb-4">
 							<input type="file" class="custom-file-input" id="productImage"
 								name="productImage"> <label class="custom-file-label"
 								for="inputGroupFile01">Upload Image</label>
