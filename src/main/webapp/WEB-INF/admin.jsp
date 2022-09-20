@@ -1,11 +1,12 @@
 <%@page import="java.util.List"%>
 <%@page import="com.guru.ecomspringboothibernate.Dao.CategoryDao"%>
-<%@page import="java.util.List"%>
 <%@page import="com.guru.ecomspringboothibernate.entity.User"%>
 <%@page import="com.guru.ecomspringboothibernate.entity.Category"%>
 <%
 User user = (User) session.getAttribute("current-user");
 List<Category> categoryy = (List<Category>) session.getAttribute("categoryy");
+
+
 
 if (user == null) {
 	session.setAttribute("msg",

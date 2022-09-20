@@ -21,12 +21,12 @@
 							<label for="exampleInputEmail1">Email</label> <input type="email"
 								name="email" class="form-control"
 								+
-            placeholder="example@gmail.com" required />
+            placeholder="example@gmail.com"  />
 						</div>
 						<div class="form-group">
 							<label for="exampleInputEmail1">Password</label> <input
 								type="password" name="password" class="form-control"
-								placeholder="********" required />
+								placeholder="********" >
 						</div>
 						<div class="container text-center">
 							<input type="submit" class="btn btn-primary mt-2">

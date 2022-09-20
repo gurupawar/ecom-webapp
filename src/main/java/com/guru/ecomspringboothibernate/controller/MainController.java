@@ -1,7 +1,6 @@
 package com.guru.ecomspringboothibernate.controller;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.guru.ecomspringboothibernate.Dao.CategoryDao;
 import com.guru.ecomspringboothibernate.Dao.UserDao;
 import com.guru.ecomspringboothibernate.entity.Category;
 import com.guru.ecomspringboothibernate.entity.User;
@@ -116,7 +114,6 @@ public class MainController {
 
 			if (user.getU_type().equals("admin")) {
 
-				System.out.println("admin "+ cateee);
 				System.out.println("in admin");
 				mv.setViewName("admin");
 			} else if (user.getU_type().equals("normal")) {
@@ -141,7 +138,7 @@ public class MainController {
 	// Add new Category
 	@RequestMapping(path = "/addNewCategory", method = RequestMethod.POST)
 	public ModelAndView addNewCategoryHandler(@RequestParam("categoryTitle") String catTitle,
-			@RequestParam("categoryTitle") String catDesc, Model model) {
+			@RequestParam("categoryDesc") String catDesc, Model model) {
 		System.out.println("in addNewCategoryHandler");
 		ModelAndView mv = new ModelAndView();
 		newCategoryService.newCategory(catTitle, catDesc, model);
@@ -153,7 +150,7 @@ public class MainController {
 	@RequestMapping(path = "/addNewProduct", method = RequestMethod.POST)
 	public ModelAndView addNewProductHandler(@RequestParam("productTitle") String title,
 			@RequestParam("productQty") String qty, @RequestParam("productPrice") String price,
-			@RequestParam("productDesc") String desc, @RequestParam("productImage") String img, @RequestParam("catId") String catId , Model model) {
+			@RequestParam("productDesc") String desc, @RequestParam("productImage") String img, @RequestParam("catId") String catId , Model model,HttpServletRequest request ) {
 		System.out.println("in addNewProductHandler");
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("admin");
