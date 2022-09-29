@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.guru.ecomspringboothibernate.Dao.UserDao;
@@ -150,11 +151,12 @@ public class MainController {
 	@RequestMapping(path = "/addNewProduct", method = RequestMethod.POST)
 	public ModelAndView addNewProductHandler(@RequestParam("productTitle") String title,
 			@RequestParam("productQty") String qty, @RequestParam("productPrice") String price,
-			@RequestParam("productDesc") String desc, @RequestParam("productImage") String img, @RequestParam("catId") String catId , Model model,HttpServletRequest request ) {
+			@RequestParam("productDesc") String desc, @RequestParam("productImage") MultipartFile img,
+			@RequestParam("catId") String catId, Model model, HttpServletRequest request) {
 		System.out.println("in addNewProductHandler");
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("admin");
-		newProductService.newProduct(title, qty, price, desc, img,catId, model);
+		newProductService.newProduct(title, qty, price, desc, img, catId, model);
 		return mv;
 	}
 }

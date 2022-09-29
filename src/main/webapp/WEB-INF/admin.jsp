@@ -150,7 +150,7 @@ if (user == null) {
 					</button>
 				</div>
 				<div class="modal-body">
-					<form action="addNewProduct" , method="POST">
+					<form action="addNewProduct" , method="POST" enctype="multipart/form-data">
 						<div class="form-group">
 							<input type="text" class="form-control" name="productTitle"
 								placeholder="Product Name" required />
