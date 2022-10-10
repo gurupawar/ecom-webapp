@@ -156,7 +156,9 @@ public class MainController {
 		System.out.println("in addNewProductHandler");
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("admin");
-		newProductService.newProduct(title, qty, price, desc, img, catId, model);
+
+		newProductService.newProduct(title, qty, price, desc, img, catId, model, request);
+
 		return mv;
 	}
 }

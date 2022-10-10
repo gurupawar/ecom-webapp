@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,10 +25,10 @@ public class Category {
 	@Column(name = "c_name")
 	private String c_name;
 
-	@Column(name="c_desc")
+	@Column(name = "c_desc")
 	private String c_desc;
 
-	@OneToMany
+	@OneToMany(fetch = FetchType.EAGER)
 	private List<Product> products = new ArrayList<>();
 
 	public Category(String c_id, String c_name, String c_desc, List<Product> products) {
@@ -42,7 +43,6 @@ public class Category {
 		this.c_desc = c_desc;
 		this.products = products;
 	}
-
 
 	public Category() {
 	}

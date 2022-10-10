@@ -12,7 +12,6 @@ import org.springframework.ui.Model;
 import com.guru.ecomspringboothibernate.Dao.UserDao;
 import com.guru.ecomspringboothibernate.entity.Category;
 
-
 @Service
 public class NewCategoryService {
 
@@ -30,15 +29,33 @@ public class NewCategoryService {
 
         session.save(newCat);
         tx.commit();
-        model.addAttribute("cate_message","<div class='alert alert-success alert-dismissible fade show' role='alert'>New category added successfully🎉 <button type='button' class='close' data-dismiss='alert' aria-label='Close'> <span aria-hidden='true'>&times;</span> </button> </div>");
+        model.addAttribute("cate_message",
+                "<div class='alert alert-success alert-dismissible fade show' role='alert'>New category added successfully🎉 <button type='button' class='close' data-dismiss='alert' aria-label='Close'> <span aria-hidden='true'>&times;</span> </button> </div>");
 
     }
 
-    public List<Category> getCategories(){
+    public List<Category> getCategories() {
         Session session = userDao.getSession();
         Criteria criteria = session.createCriteria(Category.class);
         List<Category> clist = criteria.list();
         System.out.println(clist);
         return clist;
     }
+
+    public Category getSingleCategory(String cId) {
+
+        Category cat = null;
+        try {
+            Session session = userDao.getSession();
+            cat = session.get(Category.class, cId);
+            session.close();
+
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+
+        return cat;
+    }
+
 }

@@ -82,7 +82,7 @@ public class Product {
 		return p_photo;
 	}
 
-	public void setP_photo(MultipartFile img) {
+	public void setP_photo(String img) {
 		this.p_photo = img;
 	}
 
@@ -104,7 +104,7 @@ public class Product {
 		return category;
 	}
 
-	public void setCategory(int id) {
+	public void setCategory(Category id) {
 		this.category = id;
 	}
 
