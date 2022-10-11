@@ -1,6 +1,7 @@
 package com.guru.ecomspringboothibernate.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -17,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.guru.ecomspringboothibernate.Dao.UserDao;
 import com.guru.ecomspringboothibernate.entity.Category;
+import com.guru.ecomspringboothibernate.entity.Product;
 import com.guru.ecomspringboothibernate.entity.User;
 import com.guru.ecomspringboothibernate.services.LoginService;
 import com.guru.ecomspringboothibernate.services.RegisterService;
@@ -24,6 +26,7 @@ import com.guru.ecomspringboothibernate.services.UserService;
 
 import com.guru.ecomspringboothibernate.services.NewCategoryService;
 import com.guru.ecomspringboothibernate.services.NewProductService;
+import com.guru.ecomspringboothibernate.services.ProductService;
 
 @Controller
 public class MainController {
@@ -46,9 +49,20 @@ public class MainController {
 	@Autowired
 	UserDao userDao;
 
+	@Autowired
+	ProductService productService;
+
 	@GetMapping("/home")
-	public String getAllPixxa() {
-		return "index";
+	public ModelAndView getAllPixxa() {
+		ModelAndView mv = new ModelAndView();
+
+		List<Product> list = productService.getAllProducts();
+		List<Category> clist = newCategoryService.getCategories();
+		mv.setViewName("index");
+		mv.addObject("productsList", list);
+		mv.addObject("categoryList", clist);
+		System.out.println(list);
+		return mv;
 	}
 
 	@RequestMapping(path = "/signup", method = RequestMethod.GET)

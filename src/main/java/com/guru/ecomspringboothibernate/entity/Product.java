@@ -8,8 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.springframework.web.multipart.MultipartFile;
-
 @Entity
 @Table(name = "product")
 public class Product {

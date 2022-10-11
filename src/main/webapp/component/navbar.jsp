@@ -4,9 +4,11 @@ User user1 =(User) session.getAttribute("current-user");
 
 %>
 
+
 <nav
   class="navbar navbar-expand-lg navbar-dark bg-primary justify-content-between"
 >
+<div class="container">
   <a class="navbar-brand" href="home">miniPixxa</a>
   <button
     class="navbar-toggler"
@@ -72,5 +74,6 @@ User user1 =(User) session.getAttribute("current-user");
         %>
       </ul>
     </form>
+  </div>
   </div>
 </nav>
