@@ -41,10 +41,13 @@
              for(Product p : productList){
               %>
               <div class="card" style="width: 16rem;">
-                <img class="card-img-top img-fluid" src="./images/products/<%= p.getP_photo()%>" alt="<%= p.getP_name() %>">
+                <img class="card-img-top img-fluid" style="max-height:280px; max-width:100%;" src="./images/products/<%= p.getP_photo()%>" alt="<%= p.getP_name() %>">
                 <div class="card-body">
                   <h5 class="card-title"><%= p.getP_name() %></h5>
-                  <span>Rs.<%= p.getP_price()%></span>
+                </div>
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                  <small class="text-muted">Rs. <%= p.getP_price()%></small>
+                  <a class="btn btn-primary btn-sm text-white">add to Cart</a>
                 </div>
               </div>
           <%
