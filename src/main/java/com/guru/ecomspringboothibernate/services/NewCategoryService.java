@@ -29,6 +29,7 @@ public class NewCategoryService {
 
         session.save(newCat);
         tx.commit();
+        session.close();
         model.addAttribute("cate_message",
                 "<div class='alert alert-success alert-dismissible fade show' role='alert'>New category added successfully🎉 <button type='button' class='close' data-dismiss='alert' aria-label='Close'> <span aria-hidden='true'>&times;</span> </button> </div>");
 
@@ -39,6 +40,7 @@ public class NewCategoryService {
         Criteria criteria = session.createCriteria(Category.class);
         List<Category> clist = criteria.list();
         System.out.println(clist);
+        session.close();
         return clist;
     }
 

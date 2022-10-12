@@ -19,6 +19,7 @@ public class ProductService {
         Session session = userDao.getSession();
         Criteria criteria = session.createCriteria(Product.class);
         List<Product> list = criteria.list();
+        session.close();
         return list;
     }
 

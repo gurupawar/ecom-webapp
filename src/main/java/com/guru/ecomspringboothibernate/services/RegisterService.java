@@ -30,7 +30,9 @@ public class RegisterService {
 
         session.save(newUser);
         tx.commit();
-        model.addAttribute("msg", "<div class='alert alert-success' role='alert'>Your account has been created successfully..🎉 <a href='login'>login</a></div>");
+        model.addAttribute("msg",
+                "<div class='alert alert-success' role='alert'>Your account has been created successfully..🎉 <a href='login'>login</a></div>");
+        session.clear();
         return null;
     }
 

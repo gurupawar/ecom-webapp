@@ -1,9 +1,7 @@
 package com.guru.ecomspringboothibernate.services;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
 
 import javax.servlet.http.HttpServletRequest;
@@ -47,6 +45,7 @@ public class NewProductService {
 
         session.save(newPro);
         System.out.println(newPro);
+        session.close();
 
         // img Upload
         String path = request.getServletContext().getRealPath("images") + File.separator + "products" + File.separator

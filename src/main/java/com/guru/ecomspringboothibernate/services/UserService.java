@@ -29,6 +29,7 @@ public class UserService {
 		System.out.println(newUser);
 		session.save(newUser);
 		tx.commit();
+		session.close();
 		// return "registration successfull..🎉";
 		return null;
 
