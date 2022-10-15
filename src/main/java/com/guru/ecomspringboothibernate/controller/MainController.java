@@ -161,7 +161,7 @@ public class MainController {
 		return mv;
 	}
 
-	// Add new Product
+	// !Add new Product
 	@RequestMapping(path = "/addNewProduct", method = RequestMethod.POST)
 	public ModelAndView addNewProductHandler(@RequestParam("productTitle") String title,
 			@RequestParam("productQty") String qty, @RequestParam("productPrice") String price,
