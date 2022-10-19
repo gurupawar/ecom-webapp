@@ -1,6 +1,12 @@
 <%@page import="com.guru.ecomspringboothibernate.entity.Category"%>
 <%@page import="com.guru.ecomspringboothibernate.entity.Product"%>
 <%@page import="java.util.List"%>
+
+<%
+  String cat = request.getParameter("category");
+
+
+%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -25,7 +31,7 @@
              for(Category c : catList){
               %>
                  <li class="list-group-item">
-                    <a href="#">
+                    <a href="home?category=<%=c.getC_id()%>">
                     <%= c.getC_name()%>
                     </a>
                   </li>
@@ -49,7 +55,7 @@
                 <div class="card-footer d-flex justify-content-between align-items-center">
                   <small class="text-muted">Rs. <%= p.getP_price()%></small>
                   <a class="btn btn-primary btn-sm text-white">Add to Cart</a>
-                </div>
+                 </div>
               </div>
           <%
              }

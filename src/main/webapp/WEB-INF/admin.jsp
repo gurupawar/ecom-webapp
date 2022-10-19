@@ -72,7 +72,6 @@ if (user == null) {
 				</div>
 			</div>
 		</div>
-
 		<%-- Second Row --%>
 
 		<div class="row mt-4">
