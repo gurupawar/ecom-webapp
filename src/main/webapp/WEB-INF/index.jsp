@@ -2,11 +2,6 @@
 <%@page import="com.guru.ecomspringboothibernate.entity.Product"%>
 <%@page import="java.util.List"%>
 
-<%
-  String cat = request.getParameter("category");
-
-
-%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -25,9 +20,13 @@
 
             <ul class="list-group sticky-top">
             <li class="list-group-item active">Category</li>
-            <li class="list-group-item"><a href="#">All Products</a></li>
+            <li class="list-group-item"><a href="home?category=all">All Products</a></li>
             <%
              List<Category> catList = (List<Category>) request.getAttribute("categoryList");
+
+            String cat = request.getParameter("category");
+            out.println(cat);
+
              for(Category c : catList){
               %>
                  <li class="list-group-item">
